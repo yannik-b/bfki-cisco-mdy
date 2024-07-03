@@ -1,0 +1,1360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-07-03 Mi 09:26 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Projektarbeit Netzwerk Dokumentation</title>
+<meta name="author" content="Yannik Bürkle, Marcus Herrmann, Dennis Reise" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Projektarbeit Netzwerk Dokumentation</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org7ceb90f">1. MAC-Adressen-Tabellen</a>
+<ul>
+<li><a href="#org0731efa">1.1. SWSERVERROOM</a></li>
+<li><a href="#orgb6f4a59">1.2. SWBUERO</a></li>
+<li><a href="#org4327c72">1.3. SWLABOR</a></li>
+<li><a href="#org784937e">1.4. SWMEETING</a></li>
+</ul>
+</li>
+<li><a href="#orgd4bf2bc">2. Routingtabelle RTR1</a></li>
+<li><a href="#org099c4bb">3. Netze und ihre Eigenschaften</a>
+<ul>
+<li><a href="#org2c9b742">3.1. Firmennetz</a></li>
+<li><a href="#org86027fd">3.2. IoT-Netzwerk</a></li>
+<li><a href="#orge0fac25">3.3. Privat-Netzwerk</a></li>
+<li><a href="#org5271ef7">3.4. WLAN-Management-Netzwerk</a></li>
+<li><a href="#org6fe645c">3.5. Fallback VLAN</a></li>
+<li><a href="#org871cd43">3.6. Simuliertes Internet</a></li>
+</ul>
+</li>
+<li><a href="#orge99c189">4. IP-Adressen</a>
+<ul>
+<li><a href="#org8d24264">4.1. Firmennetz</a></li>
+<li><a href="#org7237d8e">4.2. IoT-Netz</a></li>
+<li><a href="#orgf46cf62">4.3. Privat-Netzwerk</a></li>
+<li><a href="#orgd1085a8">4.4. WirelessManagement</a></li>
+</ul>
+</li>
+<li><a href="#org2d3b9f7">5. Aufbau des Netzwerks</a></li>
+<li><a href="#org93015be">6. Dokumentation der ausgeführten Aktionen</a>
+<ul>
+<li><a href="#org6854220">6.1. Allgemein</a></li>
+<li><a href="#org7d15a92">6.2. SWSERVERROOM</a></li>
+<li><a href="#org9f98de5">6.3. SWLABOR</a></li>
+<li><a href="#orgc91e28e">6.4. SWBUERO</a></li>
+<li><a href="#org40a128f">6.5. SWMEETING</a></li>
+<li><a href="#org4bc15d4">6.6. RTR1</a></li>
+<li><a href="#orgd869b71">6.7. SERVER1</a></li>
+<li><a href="#org29b342a">6.8. Alle Enddevices (PCx, OSCx, MOTORx, TVx)</a></li>
+<li><a href="#org6dd7803">6.9. Wireless LAN Controller</a></li>
+<li><a href="#org9c7d615">6.10. SPEAKER_MEETING</a></li>
+<li><a href="#orge9af43e">6.11. Simuliertes Internet 8.8.8.8</a></li>
+<li><a href="#org0968e14">6.12. Simuliertes Mitarbeiternotebook</a>
+<ul>
+<li><a href="#org15f129f">6.12.1. Tests</a></li>
+</ul>
+</li>
+<li><a href="#org363044b">6.13. Simuliertes Notebook im VLAN 20 (IoT-Netz)</a>
+<ul>
+<li><a href="#org08f42d7">6.13.1. Tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7ceb90f" class="outline-2">
+<h2 id="org7ceb90f"><span class="section-number-2">1.</span> MAC-Adressen-Tabellen</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org0731efa" class="outline-3">
+<h3 id="org0731efa"><span class="section-number-3">1.1.</span> SWSERVERROOM</h3>
+<div class="outline-text-3" id="text-1-1">
+<div class="org-src-container">
+<pre class="src src-nil">SWSERVERROOM#show mac-address-table
+          Mac Address Table
+-------------------------------------------
+
+Vlan    Mac Address       Type        Ports
+----    -----------       --------    -----
+
+  10    0001.43b8.6c01    DYNAMIC     Gig0/2
+  10    0001.64be.b617    DYNAMIC     Fa0/2
+  10    0001.c963.aae3    DYNAMIC     Gig0/1
+  10    0006.2a52.5372    DYNAMIC     Gig0/1
+  10    0090.2b11.6254    DYNAMIC     Gig0/1
+  10    00d0.bcbe.b68a    DYNAMIC     Fa0/22
+  10    00e0.8f60.9dcd    DYNAMIC     Fa0/23
+  10    00e0.f758.668e    DYNAMIC     Gig0/1
+  20    0001.43b8.6c01    DYNAMIC     Gig0/2
+  20    0001.43eb.baea    DYNAMIC     Fa0/23
+  20    0001.97d4.3b62    DYNAMIC     Fa0/23
+  20    0004.9a2a.0553    DYNAMIC     Fa0/23
+  20    0007.ec9b.9670    DYNAMIC     Fa0/23
+  20    0040.0b5a.7743    DYNAMIC     Fa0/23
+  20    00e0.f7eb.7845    DYNAMIC     Fa0/23
+  30    0001.43b8.6c01    DYNAMIC     Gig0/2
+  40    0001.c946.8201    DYNAMIC     Fa0/1
+  40    000b.be06.0a01    DYNAMIC     Fa0/24
+  40    00d0.5831.aa01    DYNAMIC     Gig0/1
+  40    00e0.a31a.5b56    DYNAMIC     Fa0/21
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb6f4a59" class="outline-3">
+<h3 id="orgb6f4a59"><span class="section-number-3">1.2.</span> SWBUERO</h3>
+<div class="outline-text-3" id="text-1-2">
+<div class="org-src-container">
+<pre class="src src-nil">SWBUERO#show mac-address-table
+          Mac Address Table
+-------------------------------------------
+
+Vlan    Mac Address       Type        Ports
+----    -----------       --------    -----
+
+  10    0001.43b8.6c01    DYNAMIC     Gig0/1
+  10    0001.64be.b617    DYNAMIC     Gig0/1
+  10    0001.64e2.4119    DYNAMIC     Gig0/1
+  10    0001.c963.aae3    DYNAMIC     Fa0/3
+  10    0006.2a52.5372    DYNAMIC     Fa0/1
+  10    0090.2b11.6254    DYNAMIC     Fa0/4
+  10    00e0.8f60.9dcd    DYNAMIC     Gig0/1
+  10    00e0.f758.668e    DYNAMIC     Fa0/2
+  10    0001.6478.ac12    DYNAMIC     Gig0/1
+  30    0001.64e2.4119    DYNAMIC     Gig0/1
+  40    0001.64e2.4119    DYNAMIC     Gig0/1
+  40    00d0.5831.aa01    DYNAMIC     Fa0/24
+  40    00e0.a31a.5b56    DYNAMIC     Gig0/1
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4327c72" class="outline-3">
+<h3 id="org4327c72"><span class="section-number-3">1.3.</span> SWLABOR</h3>
+<div class="outline-text-3" id="text-1-3">
+<div class="org-src-container">
+<pre class="src src-nil">SWLABOR#show mac-address-table
+          Mac Address Table
+-------------------------------------------
+
+Vlan    Mac Address       Type        Ports
+----    -----------       --------    -----
+
+  10    0001.43b8.6c01    DYNAMIC     Fa0/24
+  10    0001.64be.b617    DYNAMIC     Fa0/24
+  10    0001.64e2.4117    DYNAMIC     Fa0/24
+  10    0001.c963.aae3    DYNAMIC     Fa0/24
+  10    0006.2a52.5372    DYNAMIC     Fa0/24
+  10    0090.2b11.6254    DYNAMIC     Fa0/24
+  10    00e0.8f60.9dcd    DYNAMIC     Fa0/1
+  10    00e0.f758.668e    DYNAMIC     Fa0/24
+  20    0001.43b8.6c01    DYNAMIC     Fa0/24
+  20    0001.43eb.baea    DYNAMIC     Fa0/11
+  20    0001.64e2.4117    DYNAMIC     Fa0/24
+  20    0001.97d4.3b62    DYNAMIC     Fa0/21
+  20    0004.9a2a.0553    DYNAMIC     Fa0/10
+  20    0007.ec9b.9670    DYNAMIC     Fa0/13
+  20    0040.0b5a.7743    DYNAMIC     Fa0/20
+  20    00e0.f7eb.7845    DYNAMIC     Fa0/12
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org784937e" class="outline-3">
+<h3 id="org784937e"><span class="section-number-3">1.4.</span> SWMEETING</h3>
+<div class="outline-text-3" id="text-1-4">
+<div class="org-src-container">
+<pre class="src src-nil">SWMEETING#sh mac-address-table
+          Mac Address Table
+-------------------------------------------
+
+Vlan    Mac Address       Type        Ports
+----    -----------       --------    -----
+
+  10    0001.43b8.6c01    DYNAMIC     Fa0/24
+  10    0001.64e2.4118    DYNAMIC     Fa0/24
+  10    0001.c963.aae3    DYNAMIC     Fa0/24
+  10    0090.2b11.6254    DYNAMIC     Fa0/24
+  10    00e0.8f60.9dcd    DYNAMIC     Fa0/24
+  10    0001.6478.ac12    DYNAMIC     Fa0/2
+  10    0006.2a52.5372    DYNAMIC     Fa0/24
+  30    0001.64e2.4118    DYNAMIC     Fa0/24
+  40    0001.64e2.4118    DYNAMIC     Fa0/24
+  40    000b.be06.0a01    DYNAMIC     Fa0/1
+  40    00e0.a31a.5b56    DYNAMIC     Fa0/24
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd4bf2bc" class="outline-2">
+<h2 id="orgd4bf2bc"><span class="section-number-2">2.</span> Routingtabelle RTR1</h2>
+<div class="outline-text-2" id="text-2">
+<div class="org-src-container">
+<pre class="src src-nil">RTR1#show ip route
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+[output shortened]
+
+Gateway of last resort is not set
+ *   0.0.0.0/1 is subnetted, 1 subnets
+C*      0.0.0.0/1 is directly connected, GigabitEthernet0/1
+     45.0.0.0/32 is subnetted, 1 subnets
+L       45.232.17.11/32 is directly connected, GigabitEthernet0/1
+     172.19.0.0/16 is variably subnetted, 8 subnets, 2 masks
+C       172.19.0.0/25 is directly connected, GigabitEthernet0/0.10
+L       172.19.0.1/32 is directly connected, GigabitEthernet0/0.10
+C       172.19.0.128/25 is directly connected, GigabitEthernet0/0.20
+L       172.19.0.129/32 is directly connected, GigabitEthernet0/0.20
+C       172.19.1.0/25 is directly connected, GigabitEthernet0/0.30
+L       172.19.1.1/32 is directly connected, GigabitEthernet0/0.30
+C       172.19.1.128/25 is directly connected, GigabitEthernet0/0.40
+L       172.19.1.129/32 is directly connected, GigabitEthernet0/0.40
+
+RTR1#show ipv6 route
+IPv6 Routing Table - 15 entries
+Codes: C - Connected, L - Local, S - Static, R - RIP, B - BGP
+[output shortened]
+C   2001:DB8:0:0:10::/80 [0/0]
+     via GigabitEthernet0/0.10, directly connected
+L   2001:DB8::10:0:0:1/128 [0/0]
+     via GigabitEthernet0/0.10, receive
+C   2001:DB8:0:0:20::/80 [0/0]
+     via GigabitEthernet0/0.20, directly connected
+L   2001:DB8::20:0:0:1/128 [0/0]
+     via GigabitEthernet0/0.20, receive
+C   2001:DB8:0:0:30::/80 [0/0]
+     via GigabitEthernet0/0.30, directly connected
+L   2001:DB8::30:0:0:1/128 [0/0]
+     via GigabitEthernet0/0.30, receive
+C   2001:DB8:0:10::/64 [0/0]
+     via GigabitEthernet0/0.10, directly connected
+L   2001:DB8:0:10::1/128 [0/0]
+     via GigabitEthernet0/0.10, receive
+C   2001:DB8:0:20::/64 [0/0]
+     via GigabitEthernet0/0.20, directly connected
+L   2001:DB8:0:20::1/128 [0/0]
+     via GigabitEthernet0/0.20, receive
+C   2001:DB8:0:30::/64 [0/0]
+     via GigabitEthernet0/0.30, directly connected
+L   2001:DB8:0:30::1/128 [0/0]
+     via GigabitEthernet0/0.30, receive
+C   2001:DB8:0:40::/64 [0/0]
+     via GigabitEthernet0/0.40, directly connected
+L   2001:DB8:0:40::1/128 [0/0]
+     via GigabitEthernet0/0.40, receive
+L   FF00::/8 [0/0]
+     via Null0, receive
+</pre>
+</div>
+
+<p>
+Die Routingtabelle von RTR1 ist also sehr simpel. Alle Netze sind direkt verbunden über die verschiedenen Subinterfaces von GigabitEthernet0/0.
+</p>
+</div>
+</div>
+<div id="outline-container-org099c4bb" class="outline-2">
+<h2 id="org099c4bb"><span class="section-number-2">3.</span> Netze und ihre Eigenschaften</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org2c9b742" class="outline-3">
+<h3 id="org2c9b742"><span class="section-number-3">3.1.</span> Firmennetz</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li>VLAN ID: 10</li>
+<li>CISCO VLAN Name: &ldquo;FIRMENNETZ&rdquo;</li>
+<li>IPv4-Bereich: 172.19.0.0/25</li>
+<li>IPv4-Gateway: 172.19.0.1</li>
+<li>IPv6-Bereich: 2001:db8:0:10::/64</li>
+<li>IPv6-Gateway: fe80::1</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org86027fd" class="outline-3">
+<h3 id="org86027fd"><span class="section-number-3">3.2.</span> IoT-Netzwerk</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li>VLAN ID: 20</li>
+<li>CISCO VLAN Name: &ldquo;IoT-Netz&rdquo;</li>
+<li>IPv4-Bereich: 172.19.0.128/25</li>
+<li>IPv4-Gateway: 172.19.0.129</li>
+<li>IPv6-Bereich: 2001:db8:0:20::/64</li>
+<li>IPv6-Gateway: fe80::1</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge0fac25" class="outline-3">
+<h3 id="orge0fac25"><span class="section-number-3">3.3.</span> Privat-Netzwerk</h3>
+<div class="outline-text-3" id="text-3-3">
+<ul class="org-ul">
+<li>VLAN ID: 30</li>
+<li>CISCO VLAN Name: &ldquo;Privat-Netzwerk&rdquo;</li>
+<li>IPv4-Bereich: 172.19.1.0/24</li>
+<li>IPv4-Gateway: 172.19.1.1</li>
+<li>IPv6-Bereich: 2001:db8:0:30::/64</li>
+<li>IPv6-Gateway: fe80::1</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5271ef7" class="outline-3">
+<h3 id="org5271ef7"><span class="section-number-3">3.4.</span> WLAN-Management-Netzwerk</h3>
+<div class="outline-text-3" id="text-3-4">
+<ul class="org-ul">
+<li>VLAN ID: 40</li>
+<li>CISCO VLAN Name: &ldquo;WirelessManagement&rdquo;</li>
+<li>IPv4-Bereich: 172.19.1.128/25</li>
+<li>IPv4-Gateway: 172.19.1.129</li>
+<li>IPv6-Bereich: 2001:db8:0:40::/64</li>
+<li>IPv6-Gateway: fe80::1</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6fe645c" class="outline-3">
+<h3 id="org6fe645c"><span class="section-number-3">3.5.</span> Fallback VLAN</h3>
+<div class="outline-text-3" id="text-3-5">
+<ul class="org-ul">
+<li>VLAN ID: 999</li>
+<li>CISCO VLAN Name: &ldquo;Fallback VLAN&rdquo;</li>
+</ul>
+
+<p>
+Das Fallback VLAN haben wir benutzt, um nicht verwendete Ports an den Switches auf ein nicht existentes VLAN zu legen, um die Netzwerksicherheit zu erhöhen.
+</p>
+</div>
+</div>
+<div id="outline-container-org871cd43" class="outline-3">
+<h3 id="org871cd43"><span class="section-number-3">3.6.</span> Simuliertes Internet</h3>
+<div class="outline-text-3" id="text-3-6">
+<ul class="org-ul">
+<li>IPv4-Bereich: 0.0.0.0/1</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orge99c189" class="outline-2">
+<h2 id="orge99c189"><span class="section-number-2">4.</span> IP-Adressen</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org8d24264" class="outline-3">
+<h3 id="org8d24264"><span class="section-number-3">4.1.</span> Firmennetz</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+statisch gesetzt:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">IPv4</th>
+<th scope="col" class="org-left">IPv6</th>
+<th scope="col" class="org-left">Host</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">172.19.0.1</td>
+<td class="org-left">2001:db8:0:10::1</td>
+<td class="org-left">RTR1</td>
+</tr>
+
+<tr>
+<td class="org-right">172.19.0.2</td>
+<td class="org-left">2001:db8:0:10::2</td>
+<td class="org-left">S00001</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+dynamisch via DHCP bzw. IPv6 SLAAC:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">IPv4</th>
+<th scope="col" class="org-left">IPv6</th>
+<th scope="col" class="org-left">Host</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">172.19.0.100</td>
+<td class="org-left">2001:db8:0:10:d49f:3db0:9e4c:dc9b</td>
+<td class="org-left">PCBUERO1</td>
+</tr>
+
+<tr>
+<td class="org-right">172.19.0.101</td>
+<td class="org-left">2001:db8:0:10:b9b2:eb49:d889:6cd4</td>
+<td class="org-left">PCBUERO2</td>
+</tr>
+
+<tr>
+<td class="org-right">172.19.0.106</td>
+<td class="org-left">2001:db8:0:10:49ba:9e31:8b71:f1f9</td>
+<td class="org-left">PCBUERO3</td>
+</tr>
+
+<tr>
+<td class="org-right">172.19.0.102</td>
+<td class="org-left">2001:db8:0:10:9105:77aa:3fee:3784</td>
+<td class="org-left">PCBUERO4</td>
+</tr>
+
+<tr>
+<td class="org-right">172.19.0.103</td>
+<td class="org-left">2001:db8:0:10:6ad7:bdfb:7b47:4bb5</td>
+<td class="org-left">PCLABOR1</td>
+</tr>
+
+<tr>
+<td class="org-right">172.19.0.105</td>
+<td class="org-left">2001:db8:0:10:780f:ea94:2881:7aec</td>
+<td class="org-left">PCRECEPTION</td>
+</tr>
+
+<tr>
+<td class="org-right">172.19.0.107</td>
+<td class="org-left">2001:db8:0:10:e2a7:991d:f6dd:b3ee</td>
+<td class="org-left">TVMEETING</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org7237d8e" class="outline-3">
+<h3 id="org7237d8e"><span class="section-number-3">4.2.</span> IoT-Netz</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+statisch gesetzt:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">IPv4</th>
+<th scope="col" class="org-left">IPv6</th>
+<th scope="col" class="org-left">Host</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">172.19.0.129</td>
+<td class="org-left">2001:db8:0:20::1</td>
+<td class="org-left">RTR1</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+dynamisch via DHCP bzw. IPv6 SLAAC:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">IPv4</th>
+<th scope="col" class="org-left">IPv6</th>
+<th scope="col" class="org-left">Host</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">172.19.0.143</td>
+<td class="org-left">keine</td>
+<td class="org-left">OSC1</td>
+</tr>
+
+<tr>
+<td class="org-right">172.19.0.145</td>
+<td class="org-left">keine</td>
+<td class="org-left">OSC2</td>
+</tr>
+
+<tr>
+<td class="org-right">172.19.0.144</td>
+<td class="org-left">keine</td>
+<td class="org-left">OSC3</td>
+</tr>
+
+<tr>
+<td class="org-right">172.19.0.141</td>
+<td class="org-left">keine</td>
+<td class="org-left">OSC4</td>
+</tr>
+
+<tr>
+<td class="org-right">172.19.0.140</td>
+<td class="org-left">keine</td>
+<td class="org-left">MOTOR1</td>
+</tr>
+
+<tr>
+<td class="org-right">172.19.0.142</td>
+<td class="org-left">keine</td>
+<td class="org-left">MOTOR2</td>
+</tr>
+
+<tr>
+<td class="org-right">172.19.0.146</td>
+<td class="org-left">keine</td>
+<td class="org-left">LAPTOP-IOTTEST</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgf46cf62" class="outline-3">
+<h3 id="orgf46cf62"><span class="section-number-3">4.3.</span> Privat-Netzwerk</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+statisch gesetzt:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">IPv4</th>
+<th scope="col" class="org-left">IPv6</th>
+<th scope="col" class="org-left">Host</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">172.19.1.1</td>
+<td class="org-left">2001:db8:0:30::1</td>
+<td class="org-left">RTR1</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+dynamisch via DHCP bzw. IPv6 SLAAC:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">IPv4</th>
+<th scope="col" class="org-left">IPv6</th>
+<th scope="col" class="org-left">Host</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">172.19.1.13</td>
+<td class="org-left">keine</td>
+<td class="org-left">LAPTOP-MITARBEITER1</td>
+</tr>
+
+<tr>
+<td class="org-right">172.19.1.11</td>
+<td class="org-left">keine</td>
+<td class="org-left">SPEAKER_MEETING</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgd1085a8" class="outline-3">
+<h3 id="orgd1085a8"><span class="section-number-3">4.4.</span> WirelessManagement</h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+statisch gesetzt:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right">IPv4</td>
+<td class="org-left">IPv6</td>
+<td class="org-left">Host</td>
+</tr>
+
+<tr>
+<td class="org-right">172.19.1.129</td>
+<td class="org-left">keine</td>
+<td class="org-left">RTR1</td>
+</tr>
+
+<tr>
+<td class="org-right">172.19.1.130</td>
+<td class="org-left">keine</td>
+<td class="org-left">WLC</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="outline-container-org2d3b9f7" class="outline-2">
+<h2 id="org2d3b9f7"><span class="section-number-2">5.</span> Aufbau des Netzwerks</h2>
+<div class="outline-text-2" id="text-5">
+
+<div id="org49418c4" class="figure">
+<p><img src="./bfki_projekt_cisco_logical.png" alt="bfki_projekt_cisco_logical.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org93015be" class="outline-2">
+<h2 id="org93015be"><span class="section-number-2">6.</span> Dokumentation der ausgeführten Aktionen</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-org6854220" class="outline-3">
+<h3 id="org6854220"><span class="section-number-3">6.1.</span> Allgemein</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li>zuerst die bestehenden Geräte ins Netzwerk aufgenommen</li>
+<li>für die Oszilloskope und Motorregler Cisco-Gerät &ldquo;MCU-PT&rdquo; mit 1 FE-Port genommen</li>
+<li><p>
+Zusätzliche Hardware:
+</p>
+<ul class="org-ul">
+<li>SWSERVERROOM</li>
+<li>SWMEETING</li>
+</ul>
+<p>
+APBREAK und PCRECEPTION sind via Patch Panel direkt am Hauptswitch SWSERVERROOM angebunden
+</p></li>
+<li>Display Names Prefixes
+<ul class="org-ul">
+<li>SW Switch</li>
+<li>RTR Router</li>
+<li>PC Arbeitsplatz-PC</li>
+<li>AP Access Point</li>
+<li>TV Fernseher</li>
+</ul></li>
+<li>Geräte sind mit dem Raumname SERVERROOM, BUERO, MEETING, LABOR, BREAK, RECEPTION benannt, wenn mehrere gleichartige Geräte in einem Raum vorhanden sind, werden sie ab 1 nummeriert</li>
+<li>Router wird ohne Raumname benannt und erhält einfach den Namen RTR1</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7d15a92" class="outline-3">
+<h3 id="org7d15a92"><span class="section-number-3">6.2.</span> SWSERVERROOM</h3>
+<div class="outline-text-3" id="text-6-2">
+<ul class="org-ul">
+<li><p>
+Hostname SWSERVERROOM gesetzt
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">hostname SWSERVERROOM
+</pre>
+</div></li>
+<li><p>
+logging synchronous für con0 und vty0-4 aktiviert
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">line con0
+  logging synchronous
+line vty 0 4
+  logging synchronous
+</pre>
+</div></li>
+<li><p>
+VLANs angelegt
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">vlan 10
+  name "FIRMENNETZ"
+vlan 20
+  name "IoT-Netz"
+vlan 30
+  name "Privat-Netzwerk"
+vlan 40
+  name "WirelessManagement"
+vlan 999
+  name "Fallback VLAN"
+</pre>
+</div></li>
+<li><p>
+Standardkonfiguration für alle Ports erstellen und Ports abschalten
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">interface range fa0/1-24,gi0/1-2
+  shutdown
+  switchport mode access
+  switchport access vlan 999
+</pre>
+</div></li>
+<li><p>
+Port zu Router (Gi0/2) als Trunk konfiguriert und aktiviert
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">interface gi0/2
+  description link to RTR1
+  switchport mode trunk
+  switchport trunk native vlan 999
+  switchport trunk allowed vlan 10,20,30,40
+  no shutdown
+</pre>
+</div></li>
+<li><p>
+Port zu Büro-Switch (Gi0/1) als Trunk konfiguriert und aktiviert
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">interface gi0/1
+  description link to SWBUERO
+  switchport mode trunk
+  switchport trunk native vlan 999
+  switchport trunk allowed vlan 10,30,40
+  no shutdown
+</pre>
+</div></li>
+<li><p>
+Port zu SERVER1 (Fa0/22) konfiguriert und aktiviert
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">interface fa0/22
+  description link to SERVER1
+  switchport mode access
+  switchport access vlan 10
+  no shutdown
+</pre>
+</div></li>
+<li><p>
+Port zu Labor-Switch (Fa0/23) als Trunk konfiguriert und aktiviert
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">interface fa0/23
+  description link to SWLABOR
+  switchport mode trunk
+  switchport trunk native vlan 999
+  switchport trunk allowed vlan 10,20
+  no shutdown
+</pre>
+</div></li>
+<li><p>
+Port zu Meetingraum-Switch (Fa0/24) als Trunk konfiguriert und aktiviert
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">interface fa0/24
+  description link to SWMEETING
+  switchport mode trunk
+  switchport trunk native vlan 999
+  switchport trunk allowed vlan 10,30,40
+  no shutdown
+</pre>
+</div></li>
+<li><p>
+Port zu Pausenraum-Accesspoint (Fa0/1) als Trunk konfiguriert und aktiviert
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">interface fa0/1
+  description link to APBREAK
+  switchport mode trunk
+  switchport trunk native vlan 40
+  switchport trunk allowed vlan 30,40
+  no shutdown
+</pre>
+</div></li>
+<li><p>
+Port zu Empfangs-PC (Fa0/2) konfiguriert und aktiviert
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">interface fa0/2
+  description link to PCRECEPTION
+  switchport mode access
+  switchport access vlan 10
+</pre>
+</div></li>
+<li><p>
+Port zu WLAN-Controller (Fa0/21) konfiguriert und aktiviert
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">switchport fa0/21
+  description link to Wireless Controller0
+  switchport mode access
+  switchport access vlan 40
+  no shutdown
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9f98de5" class="outline-3">
+<h3 id="org9f98de5"><span class="section-number-3">6.3.</span> SWLABOR</h3>
+<div class="outline-text-3" id="text-6-3">
+<ul class="org-ul">
+<li>Hostname SWLABOR gesetzt</li>
+<li>logging synchronous für con0 und vty0-4 aktiviert</li>
+<li>VLANs angelegt</li>
+<li>Alle Switchports Fa0/1-24,Gi0/1-2 shutdown</li>
+<li>Alle Switchports Fa0/1-24,Gi0/1-2 auf VLAN 999 gesetzt</li>
+<li><p>
+Switchport Fa0/24 (link to SWSERVERROOM) auf Trunk 10,20,30 konfiguriert und up
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">interface fa0/24
+  description link to SWSERVERROOM
+  switchport mode trunk
+  switchport trunk native vlan 999
+  switchport trunk allowed vlan 10,20,30
+  no shutdown
+</pre>
+</div></li>
+<li><p>
+Switchport Fa0/1 (link to SWLABOR1) auf Access 10 konfiguriert und up
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">interface fa0/1
+  description link to SWLABOR1
+  switchport mode access
+  switchport access 10
+  no shutdown
+</pre>
+</div></li>
+<li><p>
+Switchports Fa0/10-13 (link to OSCx) auf Access 20 konfiguriert und up
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">interface range fa0/10-13
+  switchport mode access
+  switchport access vlan 20
+  no shutdown
+</pre>
+</div></li>
+<li><p>
+Switchports Fa0/20-21 (link to MOTORx) auf Access 20 konfiguriert und up
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">interface range fa0/20-21
+  switchport mode access
+  switchport access vlan 20
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc91e28e" class="outline-3">
+<h3 id="orgc91e28e"><span class="section-number-3">6.4.</span> SWBUERO</h3>
+<div class="outline-text-3" id="text-6-4">
+<ul class="org-ul">
+<li>Hostname SWBUERO gesetzt</li>
+<li>logging synchronous für con0 und vty0-4 aktiviert</li>
+<li>VLANs angelegt</li>
+<li>Alle switchports Fa0/1-24,Gi0/1-2 shutdown</li>
+<li>Alle Switchports Fa0/1-24,Gi0/1-2 auf VLAN 999 gesetzt</li>
+<li>Switchports Fa0/1-4 (link to PCBUEROx) auf access 10 konfiguriert und up</li>
+<li>Switchport Fa0/24 (link to APBUERO) auf Trunk native VLAN 40, allowed 30 konfiguriert und up</li>
+<li>Switchport Gi0/1 (link to SWSERVERROOM) auf trunk native 999, allowed 10,30,40 konfiguriert und up</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org40a128f" class="outline-3">
+<h3 id="org40a128f"><span class="section-number-3">6.5.</span> SWMEETING</h3>
+<div class="outline-text-3" id="text-6-5">
+<ul class="org-ul">
+<li>Hostname SWMEETING gesetzt</li>
+<li>logging synchronous fün con0 und vty0-4 aktiviert</li>
+<li>VLANs angelegt</li>
+<li>Alle switchports Fa0/1-24,Gi0/1-2 shutdown</li>
+<li>Alle switchports Fa0/1-24,Gi0/1-2 auf access 999 gesetzt</li>
+<li>Switchport Fa0/1 (link to APMEETING) auf trunk native VLAN 40, allowed VLANs 30,40 konfiguriert und up</li>
+<li>Switchport Fa0/24 (link to SWSERVERROOM) auf trunk native 999, allowed 10,30,40 konfiguriert und up</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4bc15d4" class="outline-3">
+<h3 id="org4bc15d4"><span class="section-number-3">6.6.</span> RTR1</h3>
+<div class="outline-text-3" id="text-6-6">
+<ul class="org-ul">
+<li>Vier Cover in der Physical view hinzugefügt, um die leeren Plätze zu füllen</li>
+<li>Initialer Assistent übersprungen</li>
+<li>Hostname RTR1 gesetzt</li>
+<li><p>
+Logging synchronous für line con0 und vty0-15 gesetzt
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">line con 0
+  logging synchronous
+line vty 0 15
+  logging synchronous
+</pre>
+</div></li>
+<li><p>
+Subinterface Gi0/0.10 mit dot1q 10 konfiguriert und IP-Adresse 172.19.0.1/25, 2001:db8:0:10::1/64, fe80::1 zugewiesen
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">interface gi0/0.10
+  encapsulation dot1Q 10
+  ip address 172.19.0.1 255.255.255.128
+  ipv6 address 2001:db8:0:10::1/64
+  ipv6 address fe80::1 link-local
+</pre>
+</div></li>
+<li><p>
+Subinterface Gi0/0.20 mit dot1q 20 konfiguriert und IP-Adresse 172.19.0.129/25, 2001:db8:0:20::1/64, fe80::1 zugewiesen, helper-adresse zugewiesen
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">interface gi0/0.20
+  encapsulation dot1Q 20
+  ip address 172.19.0.129 255.255.255.128
+  ipv6 address 2001:db8:0:20::1/64
+  ipv6 address fe80::1 link-local
+  ip helper-address 172.19.0.2
+</pre>
+</div></li>
+<li><p>
+Subinterface Gi0/0.30 mit dot1q 30 konfiguriert und IP-Adresse 172.19.1.1/25, 2001:db8:0:30::1/64, fe80::1 zugewiesen
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">interface gi0/0.30
+  encapsulation dot1Q 30
+  ip address 172.19.1.1 255.255.255.128
+  ipv6 address 2001:db8:0:30::1/64
+  ipv6 address fe80::1 link-local
+  ip helper-address 172.19.0.2
+</pre>
+</div></li>
+<li><p>
+Subinterface Gi0/0.40 mit dot1q 40 konfiguriert und IP-Adresse 172.19.1.129/25, 2001:db8:0:40::1/64, fe80::1 zugewiesen
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">interface gi0/0.40
+  encapsulation dot1Q 40
+  ip address 172.19.1.129 255.255.255.128
+  ipv6 address 2001:db8:0:40::1/64
+  ipv6 address fe80::1 link-local
+  ip helper-address 172.19.0.2
+</pre>
+</div></li>
+<li><p>
+Interface Gi0/0 up
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">interface gi0/0
+  no shutdown
+</pre>
+</div></li>
+</ul>
+
+<p>
+Um eine Internetverbindung zu simulieren, haben wir ein weiteres Interface mit einer &ldquo;öffentlichen&rdquo; IP-Adresse hinzugefügt und den Internetzugriff mit einem NAT den Netzen ermöglicht:
+</p>
+
+<ul class="org-ul">
+<li><p>
+Access List für Internetzugriff definieren
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">ip access-list standard NAT-SOURCES
+  10 permit 172.19.0.0 0.0.0.127
+  20 permit 172.19.1.0 0.0.0.127
+</pre>
+</div></li>
+<li><p>
+NAT Pool anlegen für Internetzugriff
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">ip nat pool ISPGIVEN 45.232.17.12 45.232.17.12 netmask 128.0.0.0
+</pre>
+</div></li>
+<li><p>
+Source NAT für Internet definieren und Interface für simulierten Internettraffic erstellen
+</p>
+<div class="org-src-container">
+<pre class="src src-nil">ip nat inside source list NAT-SOURCES pool ISPGIVEN
+interface gi0/1
+  ip address 45.232.17.11 128.0.0.0
+  ip nat outside
+interface gi0/0.10
+  ip nat inside
+interface gi0/0.30
+  ip nat inside
+</pre>
+</div></li>
+</ul>
+
+<p>
+Für die Netzisolation haben wir Access-Lists erstellt und diese den Subinterfaces hinzugefügt:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">ip access-list standard FROMIOT
+  10 permit 172.19.0.0 0.0.0.127
+  90 deny any
+
+interface gi0/0.20
+  ip access-group FROMIOT out
+
+
+ip access-list standard FROMPRIVAT
+  10 deny 172.19.0.0 0.0.0.127
+  20 deny 172.19.0.128 0.0.0.127
+  30 permit any
+
+interface gi0/0.30
+  ip access-group FROMPRIVAT out
+
+
+ip access-list standard FROMFIRMENNETZ
+  10 deny 172.19.1.0 0.0.0.127
+  20 permit any
+
+interface gi0/0.10
+  ip access-group FROMFIRMENNETZ out
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd869b71" class="outline-3">
+<h3 id="orgd869b71"><span class="section-number-3">6.7.</span> SERVER1</h3>
+<div class="outline-text-3" id="text-6-7">
+<ul class="org-ul">
+<li>Hostname S000001 gesetzt</li>
+<li>IP-Adressen 172.19.0.2/25, 2001:db8:0:10::2/64 gesetzt</li>
+<li>DHCP-Server konfiguriert (KONFIG FEHLT)</li>
+<li>DHCPv6-Server konfiguriert (KONFIG FEHLT)</li>
+<li>DNS aktiviert ohne Konfig.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org29b342a" class="outline-3">
+<h3 id="org29b342a"><span class="section-number-3">6.8.</span> Alle Enddevices (PCx, OSCx, MOTORx, TVx)</h3>
+<div class="outline-text-3" id="text-6-8">
+<ul class="org-ul">
+<li>Gateway IPv4 und IPv6 via DHCP/automatisch gesetzt</li>
+<li>FastEthernet0 IPv4 und IPv6 Adressen via DHCP(v6) beziehen</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6dd7803" class="outline-3">
+<h3 id="org6dd7803"><span class="section-number-3">6.9.</span> Wireless LAN Controller</h3>
+<div class="outline-text-3" id="text-6-9">
+<ul class="org-ul">
+<li>WLAN-Netz Sensoic_Gast mit VLAN 30, WPA2-PSK Passphrase &ldquo;CISCOPacketTracer&rdquo;, lokale Switching und Authentikation konfiguriert</li>
+<li>DHCP-Pool aps angelegt mit Gateway 172.19.1.129, DNS 172.19.0.2, Start IP Address 172.19.1.140, Subnetzmask 255.255.255.128, max user 20, WLC address 172.19.1.130</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9c7d615" class="outline-3">
+<h3 id="org9c7d615"><span class="section-number-3">6.10.</span> SPEAKER_MEETING</h3>
+<div class="outline-text-3" id="text-6-10">
+<ul class="org-ul">
+<li>WLAN-Netzwerk Sensoic_Gast konfiguriert</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge9af43e" class="outline-3">
+<h3 id="orge9af43e"><span class="section-number-3">6.11.</span> Simuliertes Internet 8.8.8.8</h3>
+<div class="outline-text-3" id="text-6-11">
+<p>
+Für die simulierte Internetverbindung haben wir einen weiteren Router mit der IP 8.8.8.8 erstellt und diesen direkt mit unserem Router RTR1 verbunden.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">interface Gi0/0
+  ip address 8.8.8.8 128.0.0.0
+  no shutdown
+</pre>
+</div>
+
+<p>
+Weitere Einstellungen haben wir nicht vorgenommen, da wir diesen Router nur verweden um zu verifizieren, ob Verbindung von den einzelnen Netzen möglich ist.
+</p>
+</div>
+</div>
+<div id="outline-container-org0968e14" class="outline-3">
+<h3 id="org0968e14"><span class="section-number-3">6.12.</span> Simuliertes Mitarbeiternotebook</h3>
+<div class="outline-text-3" id="text-6-12">
+<p>
+Wir haben ein weiteres Notebook &ldquo;Laptop-Mitarbeiter1&rdquo; hinzugefügt, um Netzwerkrichtlinien für das Privat-Netzwerk zu testen. Dieses wird per WLAN-Verbindung an Sensoic_Gast angebunden und erhält seine IP-Adresse per DHCP.
+</p>
+</div>
+<div id="outline-container-org15f129f" class="outline-4">
+<h4 id="org15f129f"><span class="section-number-4">6.12.1.</span> Tests</h4>
+<div class="outline-text-4" id="text-6-12-1">
+<ul class="org-ul">
+<li class="on"><code>[X]</code> VLAN 30 kann ins Internet sprechen [getestet als Ping an 8.8.8.8]</li>
+<li class="on"><code>[X]</code> VLAN 30 kann nicht in das Firmennetz sprechen [getestet als Ping an 172.19.0.103]</li>
+<li class="on"><code>[X]</code> VLAN 30 kann nicht in das IoT-Netz sprechen [getestet als Ping an 172.19.0.146]</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org363044b" class="outline-3">
+<h3 id="org363044b"><span class="section-number-3">6.13.</span> Simuliertes Notebook im VLAN 20 (IoT-Netz)</h3>
+<div class="outline-text-3" id="text-6-13">
+<p>
+Wir haben ein weiteres Notebook &ldquo;Laptop-IoTTest&rdquo; hinzugefügt, um Netzwerkrichtlinien für das IoT-Netzwerk zu testen. Dieses wird per LAN direkt am SWSERVERROOM angebunden (Fa0/10) und erhält seine IP-Adresse per DHCP.
+</p>
+</div>
+<div id="outline-container-org08f42d7" class="outline-4">
+<h4 id="org08f42d7"><span class="section-number-4">6.13.1.</span> Tests</h4>
+<div class="outline-text-4" id="text-6-13-1">
+<ul class="org-ul">
+<li class="on"><code>[X]</code> VLAN 20 kann nicht ins Internet (NAT-Zugang über Access-List NAT-SOURCES blockiert) [getestet als Ping an 8.8.8.8]</li>
+<li class="on"><code>[X]</code> VLAN 20 kann in das Firmennetzwerk sprechen [getestet als Ping an 172.19.0.103 (PCBUERO1)]</li>
+<li class="on"><code>[X]</code> VLAN 20 kann nicht in das Privatnetzwerk sprechen [getestet als Ping an 172.19.1.16 (Laptop-Mitarbeiter1)]</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2024-05-17 Fr 00:00</p>
+<p class="author">Author: Yannik Bürkle, Marcus Herrmann, Dennis Reise</p>
+<p class="date">Created: 2024-07-03 Mi 09:26</p>
+</div>
+</body>
+</html>
